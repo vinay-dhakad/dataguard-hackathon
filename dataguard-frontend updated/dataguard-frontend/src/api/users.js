@@ -1,0 +1,10 @@
+import api from './client';
+export const getUsers = () => api.get('/api/users').then(r => r.data);
+export const getUser = id => api.get(`/api/users/${id}`).then(r => r.data);
+export const createUser = payload => api.post('/api/users', payload).then(r => r.data);
+export const updateUser = (id, payload) => api.patch(`/api/users/${id}`, payload).then(r => r.data);
+export const getUserActivity = id => api.get(`/api/users/${id}/activity`).then(r => r.data);
+export const getUserRisk = id => api.get(`/api/users/${id}/risk`).then(r => r.data);
+export const getUserPermissions = id => api.get(`/api/users/${id}/permissions`).then(r => r.data);
+export const saveUserFilePermissions = (userId, fileId, permissions) => api.put(`/api/users/${userId}/permissions/${fileId}`, permissions).then(r => r.data);
+export const revokeUserFilePermissions = (userId, fileId) => api.delete(`/api/users/${userId}/permissions/${fileId}`).then(r => r.data);
